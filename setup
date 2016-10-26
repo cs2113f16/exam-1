@@ -1,9 +1,15 @@
 #!/bin/bash
 
-git remote add upstream https://github.com/cs2113f16/exam-1.git
+git remote add upstream https://github.com/cs2113f16/exam-1.git 2> /dev/null
 git pull upstream master
+
+dir=`pwd`
 
 shopt -s extglob
 cd ..
-mkdir ~/tmp-ws/
-mv !(exam-1*) /tmp/ws
+mkdir -p ~/tmp-ws/
+mv -f !(exam-1*) /tmp/ws
+
+cd $dir
+./pre_exam
+
