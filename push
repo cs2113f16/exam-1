@@ -1,0 +1,24 @@
+#!/bin/bash
+
+grep -c YOURNAMEHERE name.txt > /dev/null
+if [ $? == 0 ]
+then
+  echo "**** ERROR ****"
+  echo "You must replace the first line of name.txt with your name"
+  exit
+fi
+
+cp ~/.bash_history do-not-enter/history-post
+echo "pushing..." >> do-not-enter/log
+date >> do-not-enter/log
+find ~/workspace/ -not -iwholename '*.git*'   > do-not-enter/files-post
+
+echo "Adding, committing, and pushing all files"
+git add . | tee -a do-not-enter/log
+git commit -m "exam 1" | tee -a do-not-enter/log
+git push origin master | tee -a do-not-enter/log
+
+# make backup copy
+tar czf ~/backup-exam-1-`date +%s`.tgz ~/workspace/ 2> /dev/null
+
+echo "If you do not see any errors above, then Code has been committed and pushed. You should verify this on github."

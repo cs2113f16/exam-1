@@ -1,4 +1,12 @@
 #!/bin/bash
 
-echo "Getting ready for exam..."
-echo "THE EXAM HAS NOT STARTED YET, DON'T MODIFY ANY FILES"
+echo "Getting ready for exam..." 
+mkdir -p do-not-enter
+echo "running pre_exam" >> do-not-enter/log
+date >> do-not-enter/log
+
+find ~/workspace/ -not -iwholename '*.git*'   > do-not-enter/files-pre
+cp ~/.bash_history do-not-enter/history-pre
+
+
+echo "YOU ARE ALL SET TO START THE EXAM"
