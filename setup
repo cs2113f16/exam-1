@@ -8,7 +8,7 @@ dir=`pwd`
 shopt -s extglob
 cd ..
 mkdir -p ~/tmp-ws/
-mv -f !(exam-1*) /tmp/ws
+mv -f !(exam-1*)  ~/tmp-ws/
 
 cd $dir
 ./pre_exam
